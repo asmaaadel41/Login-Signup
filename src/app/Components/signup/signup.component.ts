@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
       fullName: [null, [Validators.required, Validators.pattern('[A-Za-z ]{3,32}')]],
       email: [null, [Validators.required, Validators.email]],
       phone: [null, [Validators.required]],
-      password: [null, [Validators.required, Validators.pattern('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/')]],
+      password: [null, [Validators.required]],
     })
   }
   ngOnInit(): void {
