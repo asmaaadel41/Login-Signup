@@ -1,0 +1,48 @@
+<div class="login">
+  <div class="conatiner">
+    <div class="card">
+      <div class="text-center">
+        <h1>Log In</h1>
+        <h5>Please Enter Email & Password!!</h5>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" [class.is-valid]="email?.valid" [class.is-invalid]="email?.invalid && email?.touched"
+            formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <div class="text-danger" *ngIf="email?.invalid && email?.touched && email?.errors">
+            <small *ngIf="email?.errors?.['required']">
+              Email is required
+            </small>
+            <small *ngIf="email?.errors?.['email']">
+              Invalid Email
+            </small>
+          </div>
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" [class.is-valid]="password?.valid"
+            [class.is-invalid]="password?.invalid && password?.touched" formControlName="password" class="form-control"
+            id="password">
+          <div class="text-danger" *ngIf="password?.invalid && password?.touched && password?.errors">
+            <small *ngIf="password?.errors?.['required']">
+              Password is required
+            </small>
+            <small *ngIf="loginForm.get('password')?.errors?.['pattern']">
+              Invalid password
+            </small>
+          </div>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary px-4" [disabled]="loginForm.invalid">Log In</button>
+      </form>
+      <div class="text-light mt-2">New user?
+        <a class="text-light" routerLink="Signup" (click)="signup()">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</div>
