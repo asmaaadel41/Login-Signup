@@ -9,7 +9,7 @@ import { MainLayoutComponent } from './Components/main-layout/main-layout.compon
 const routes: Routes = [
   {
     path: '', component: MainLayoutComponent, children: [
-      { path: '', redirectTo: "Home", pathMatch: 'full' },
+      { path: '', redirectTo: "Login", pathMatch: 'full' },
       { path: "Home", component: HomeComponent},
   ]},
   { path: "Login", component: LoginComponent },

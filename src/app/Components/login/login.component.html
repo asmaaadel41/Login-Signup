@@ -8,13 +8,13 @@
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="mb-3">
           <label for="email" class="form-label">Email Address</label>
-          <input type="email" [class.is-valid]="email?.valid" [class.is-invalid]="email?.invalid && email?.touched"
+          <input type="email" [class.is-valid]="loginForm.get('email')?.valid" [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
             formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
-          <div class="text-danger" *ngIf="email?.invalid && email?.touched && email?.errors">
-            <small *ngIf="email?.errors?.['required']">
+          <div class="text-danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched && loginForm.get('email')?.errors">
+            <small *ngIf="loginForm.get('email')?.errors?.['required']">
               Email is required
             </small>
-            <small *ngIf="email?.errors?.['email']">
+            <small *ngIf="loginForm.get('email')?.errors?.['email']">
               Invalid Email
             </small>
           </div>
@@ -22,11 +22,11 @@
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" [class.is-valid]="password?.valid"
-            [class.is-invalid]="password?.invalid && password?.touched" formControlName="password" class="form-control"
+          <input type="password" [class.is-valid]="loginForm.get('password')?.valid"
+            [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" formControlName="password" class="form-control"
             id="password">
-          <div class="text-danger" *ngIf="password?.invalid && password?.touched && password?.errors">
-            <small *ngIf="password?.errors?.['required']">
+          <div class="text-danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched && loginForm.get('password')?.errors">
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">
               Password is required
             </small>
             <small *ngIf="loginForm.get('password')?.errors?.['pattern']">
@@ -38,7 +38,7 @@
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" class="btn btn-primary px-4" [disabled]="loginForm.invalid">Log In</button>
+        <button type="submit" class="btn btn-primary px-4" [disabled]="loginForm.invalid" (click)="login()">Log In</button>
       </form>
       <div class="text-light mt-2">New user?
         <a class="text-light" routerLink="Signup" (click)="signup()">Sign Up</a>
